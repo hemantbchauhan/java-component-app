@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:pop3="http://www.mulesoft.org/schema/mule/pop3" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/pop3 http://www.mulesoft.org/schema/mule/pop3/current/mule-pop3.xsd">
+    
+	<spring:beans>
+		<spring:bean name="invokeJava"  class="com.xoriant.invokeJavaMethod"/>
+	</spring:beans>
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    
+	
+    <flow name="java-componets-appFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/javaComponents" doc:name="HTTP"/>
+        <set-variable variableName="name" value="#[message.inboundProperties.'http.query.params'.name]" doc:name="Variable"/>
+        <invoke object-ref="invokeJava" method="helloInvoke" doc:name="Invoke" methodArguments="#[flowVars.name]"/>
+        <logger level="INFO" doc:name="Logger" message="Payload after Invoke component  #[payload]"/>
+        <component  doc:name="Java" class="com.xoriant.invokeJavaMethod">
+        </component>
+        <logger level="INFO" doc:name="Logger" message="Payload after Java component  #[payload]"/>
+    </flow>
+    
+    <flow name="entry-point-resolver" >
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/entryPointResolver" doc:name="HTTP"/>
+        <set-variable doc:name="Employee" value="#[message.inboundProperties.'http.query.params'.employee]" variableName="employee"/>
+
+		<set-variable doc:name="Dept" value="#[message.inboundProperties.'http.query.params'.dept]" variableName="dept"/>
+	<!--Construct a String array with 2 elements from request parameters.-->
+	<expression-transformer doc:name="Expression">
+            <return-argument evaluator="variable" expression="employee"/>
+            <return-argument evaluator="variable" expression="dept"/>
+	</expression-transformer>
+        <component doc:name="Java">
+            <singleton-object class="com.xoriant.ReflectionEntryPointResolverExample"/>
+        </component>
+        <echo-component doc:name="Echo"/>
+
+	<!--Construct a String element from request parameter.-->
+	<expression-transformer doc:name="Expression">
+            <return-argument evaluator="variable" expression="employee"/>
+	</expression-transformer>
+        <component doc:name="Java">
+            <singleton-object class="com.xoriant.ReflectionEntryPointResolverExample"/>
+        </component>
+        <echo-component doc:name="Echo"/>
+
+	<!-- Make request payload null using groovy expression -->
+	<expression-transformer evaluator="groovy" expression="return null;" doc:name="Expression"/>
+        <component doc:name="Java">
+            <singleton-object class="com.xoriant.ReflectionEntryPointResolverExample"/>
+        </component>
+
+        <expression-transformer evaluator="string" expression="Successfully completed Reflection Entry Point Resolver flow. Please check your log messages for output." doc:name="Expression"/>
+        <echo-component doc:name="Echo"/>
+    </flow>
+    
+</mule>

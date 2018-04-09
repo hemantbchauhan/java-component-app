@@ -1,0 +1,13 @@
+.DS_Store
+bin
+.settings
+.studio
+target
+flows
+*.mflow
+.classpath
+.project
+*.log
+project.properties
+test.properties
+keystore.ImportKey
