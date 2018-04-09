@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:pop3="http://www.mulesoft.org/schema/mule/pop3" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+<mule xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns:pop3="http://www.mulesoft.org/schema/mule/pop3" xmlns:file="http://www.mulesoft.org/schema/mule/file"
 	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:spring="http://www.springframework.org/schema/beans" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -20,7 +20,7 @@ http://www.mulesoft.org/schema/mule/pop3 http://www.mulesoft.org/schema/mule/pop
         <http:listener config-ref="HTTP_Listener_Configuration" path="/javaComponents" doc:name="HTTP"/>
         <set-variable variableName="name" value="#[message.inboundProperties.'http.query.params'.name]" doc:name="Variable"/>
         <invoke object-ref="invokeJava" method="helloInvoke" doc:name="Invoke" methodArguments="#[flowVars.name]"/>
-        <logger level="INFO" doc:name="Logger" message="Payload after Invoke component  #[payload]"/>
+        <logger level="INFO" doc:name="Logger" message="Payload after Invoke component ::  #[payload]"/>
         <component  doc:name="Java" class="com.xoriant.invokeJavaMethod">
         </component>
         <logger level="INFO" doc:name="Logger" message="Payload after Java component  #[payload]"/>
