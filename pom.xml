@@ -61,11 +61,16 @@
 				<version>2.0</version>
 				<configuration>
 					<deploymentType>cloudhub</deploymentType>
-					<muleVersion>3.8.4</muleVersion>
+					<muleVersion>${mule.version}</muleVersion>
 					<username>${anypoint.username}</username>
 					<password>${anypoint.password}</password>
+					<applicationName>${artifactId}</applicationName>
+					<environment>Sandbox</environment>
+					<businessGroup>MulePractice</businessGroup>
+					<region>US West (N.California)</region>
+					<uri>https://anypoint.mulesoft.com</uri>
 					<redeploy>true</redeploy>
-					<environment>${anypoint.environment}</environment>
+
 					<workerType>Micro</workerType>
 				</configuration>
 				<executions>
