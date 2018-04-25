@@ -54,7 +54,7 @@
 					</execution>
 				</executions>
 			</plugin>
-		<!--  Deploy in Cloudhub -->	
+		<!--  Deploy in Cloudhub  -->	
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
