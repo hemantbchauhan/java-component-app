@@ -65,7 +65,7 @@
 					<username>${anypoint.username}</username>
 					<password>${anypoint.password}</password>
 					<applicationName>${artifactId}</applicationName>
-					<environment>sandbox</environment>
+					<environment>Sandbox</environment>
 					<businessGroup>xoriant\mulepractice</businessGroup>
 					<region>us west (n.california)</region>
 					<uri>https://anypoint.mulesoft.com</uri>
