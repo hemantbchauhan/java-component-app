@@ -176,7 +176,7 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-	<distributionManagement>
+
 	<repositories>
           <repository>
             <id>Central</id>
@@ -191,7 +191,7 @@
             <layout>default</layout>
         </repository>
     </repositories>
-    </distributionManagement>
+
     <pluginRepositories>
         <pluginRepository>
             <id>mulesoft-release</id>
