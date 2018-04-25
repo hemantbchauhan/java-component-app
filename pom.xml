@@ -66,13 +66,15 @@
 					<password>${anypoint.password}</password>
 					<applicationName>${artifactId}</applicationName>
 					<environment>Sandbox</environment>
-					<businessGroup>Xoriant\MulePractice</businessGroup>
+					<businessGroup>Xoriant</businessGroup>
 					<region>us west (n.california)</region>
 					<uri>https://anypoint.mulesoft.com</uri>
 					<redeploy>true</redeploy>
 					<workerType>Micro</workerType>
+					<!-- 
 					<anypoint.platform.client_id>206dc27b04734342a3c2a242b1a977f4</anypoint.platform.client_id>
         			<anypoint.platform.client_secret>895076088A7B4618A6367d159FF298Fc</anypoint.platform.client_secret>
+        			-->
 				</configuration>
 				<executions>
 					<execution>
