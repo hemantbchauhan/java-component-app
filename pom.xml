@@ -179,9 +179,9 @@
 
 	<distributionManagement>
         <repository>
-            <id>mulesoft-releases</id>
-            <name>MuleSoft Releases Repository</name>
-            <url>http://repository.mulesoft.org/releases/</url>
+            <id>${artifactId}</id>
+            <name>Mule java-componets-app Application</name>
+            <url>https://anypoint.mulesoft.com</url>
             <layout>default</layout>
         </repository>
 	</distributionManagement>
