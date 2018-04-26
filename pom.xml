@@ -69,7 +69,7 @@
 					<businessGroup>Xoriant\MulePractice</businessGroup>
 					<region>us west (n.california)</region>
 					<uri>https://anypoint.mulesoft.com</uri>
-					<redeploy>false</redeploy>
+					<redeploy>true</redeploy>
 					<workerType>Micro</workerType>
 					<!-- 
 					<anypoint.platform.client_id>206dc27b04734342a3c2a242b1a977f4</anypoint.platform.client_id>
