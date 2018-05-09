@@ -23,7 +23,7 @@ http://www.mulesoft.org/schema/mule/pop3 http://www.mulesoft.org/schema/mule/pop
         <logger level="INFO" doc:name="Logger" message="Payload after Invoke component ::  #[payload]"/>
         <component  doc:name="Java" class="com.xoriant.invokeJavaMethod">
         </component>
-        <logger level="INFO" doc:name="Logger" message="Payload after Java component :: #[payload]"/>
+        <logger level="INFO" doc:name="Logger" message="Payload after Java component ::: #[payload]"/>
     </flow>
     
     <flow name="entry-point-resolver" >
