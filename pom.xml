@@ -95,7 +95,10 @@
 				<version>2.2.1</version>
 				<configuration>
 					<deploymentType>standalone</deploymentType>
+					<!-- 
 					<muleHome>D:\Hemant\Mulesoft\mule-enterprise-standalone-3.9.0</muleHome>
+					 -->
+					<muleHome>/home/ubuntu-vm/mulesoft/mule-enterprise-standalone-3.9.0</muleHome>
 				</configuration>
 				<executions>
 					<execution>
